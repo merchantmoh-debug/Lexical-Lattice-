@@ -1,0 +1,36 @@
+{
+  "experiment": "lexicographic_rlhf_governance",
+  "date": "2026-05-09",
+  "base_model": "google/gemma-4-E4B",
+  "eval_benchmark": "Anthropic/sycophancy_on_nlp_survey",
+  "eval_samples": 500,
+  "aggregate_results": {
+    "raw_base": {"sycophancy_rate": 53.0, "sycophantic_count": 265},
+    "scalar_adapter": {"sycophancy_rate": 47.6, "sycophantic_count": 238},
+    "lex_adapter": {"sycophancy_rate": 50.8, "sycophantic_count": 254}
+  },
+  "flip_analysis": {
+    "scalar": {"fixed": 27, "broken": 0, "net": 27},
+    "lex": {"fixed": 11, "broken": 0, "net": 11}
+  },
+  "margin_distribution": {
+    "buckets": ["<-2.0", "-2.0 to -0.5", "-0.5 to 0.5", "0.5 to 2.0", ">2.0"],
+    "raw": [35, 199, 1, 78, 187],
+    "scalar": [27, 206, 212, 55, 0],
+    "lex": [235, 0, 98, 159, 8]
+  },
+  "per_sample_shift": {
+    "scalar": {"mean_shift": -1.064, "median_shift": -1.063},
+    "lex": {"mean_shift": -1.502, "median_shift": -1.500}
+  },
+  "logit_perturbation": {
+    "scalar": {"mean_delta": 1.539, "max_delta": 8.500, "vocab_perturbed_pct": 99.4},
+    "lex": {"mean_delta": 1.414, "max_delta": 8.375, "vocab_perturbed_pct": 99.4}
+  },
+  "checkpoint_audit": {
+    "Q1_exists": true,
+    "Q2_zero_layers": 0,
+    "Q2_total_layers": 132,
+    "Q3_vocab_perturbed_pct": 99.4
+  }
+}
